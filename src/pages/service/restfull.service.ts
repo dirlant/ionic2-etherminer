@@ -12,14 +12,18 @@ export class RestfullService {
     }
   
     getObjeto(funcion) {
-  
+        // url: es la ruta de la api a la que se desea conectar
         let url = 'https://jsonplaceholder.typicode.com/'+ funcion;
+
+        // res: es la variable que devolvera una respuesta en formato json
         let res = this._http.get(url, { headers: this.getHeaders() })
                             .map(res => res.json());
         return res ;
     }
 
     
+    // getHeaders(): es una funcion que agrega gran cantidad de header al momento
+    // de hacer una peticion AJAX por HTTP para conectarse a una API
     private getHeaders() {
         var headers = new Headers();
         headers.append('Accept', 'application/json');

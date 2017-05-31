@@ -28,15 +28,15 @@ export class HomePage {
 
   ionViewDidLoad() {
       
-      this._restfullService.getObjeto('posts').subscribe(
-        data => {
-            this.respuestaJson = data; 
-            console.log(this.respuestaJson);
-        },
-        err => {
-            //console.log(err);
-        },
-        () => console.log('Hubo un error')
+    this._restfullService.getObjeto('posts').subscribe(
+      data => {
+          this.respuestaJson = data; 
+          console.log(this.respuestaJson);
+      },
+      err => {
+          //console.log(err);
+      },
+      () => console.log('Hubo un error')
     );
   }
 
