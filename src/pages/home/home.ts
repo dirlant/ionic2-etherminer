@@ -1,26 +1,43 @@
+import { RestfullService } from './../service/restfull.service';
+
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html', 
+  providers:[
+    RestfullService
+  ]
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  public respuestaJson: any;
+
+  constructor(
+    public navCtrl: NavController,
+    private _restfullService: RestfullService
+    
+  ) {
 
   }
 
   
-  this.movieService.searchMovies(event.target.value).subscribe(
-      data => {
-          this.movies = data.results; 
-          console.log(data);
-      },
-      err => {
-          console.log(err);
-      },
-      () => console.log('Movie Search Complete')
-  );
+  
+
+  ionViewDidLoad() {
+      
+      this._restfullService.getObjeto('posts').subscribe(
+        data => {
+            this.respuestaJson = data; 
+            console.log(this.respuestaJson);
+        },
+        err => {
+            //console.log(err);
+        },
+        () => console.log('Hubo un error')
+    );
+  }
 
 }
